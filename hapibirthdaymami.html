@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #FFB3BA 0%, #FFDFBA 20%, #FFFFBA 40%, #BAFFC9 60%, #BAE1FF 80%, #E0BBE4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .photo-grid-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .photo-row {
+            display: flex;
+            width: max-content;
+            gap: 20px;
+            padding: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .photo-row {
+                gap: 10px;
+                padding: 10px 0;
+            }
+        }
+
+        .photo-row:nth-child(1) {
+            animation: slideLeft 40s linear infinite;
+        }
+
+        .photo-row:nth-child(2) {
+            animation: slideRight 45s linear infinite;
+        }
+
+        .photo-row:nth-child(3) {
+            animation: slideLeft 50s linear infinite;
+        }
+
+        .photo-row:nth-child(4) {
+            animation: slideRight 42s linear infinite;
+        }
+        
+        .photo-row:nth-child(5) {
+            animation: slideLeft 38s linear infinite;
+        }
+        
+        .photo-row:nth-child(6) {
+            animation: slideRight 44s linear infinite;
+        }
+        
+        .photo-row:nth-child(7) {
+            animation: slideLeft 41s linear infinite;
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes slideRight {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .sliding-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0.85;
+            border: 3px solid white;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .sliding-photo {
+                width: 100px;
+                height: 100px;
+                border: 2px solid white;
+                opacity: 0.75;
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            width: 88%;
+            position: relative;
+            animation: fadeIn 1s ease-in;
+            z-index: 2;
+            margin: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+                width: 90%;
+                max-width: none;
+                margin: 10px;
+                border-radius: 15px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(90deg, #FF0080, #FF8C00, #FFD700, #00FF00, #00CED1, #4169E1, #9370DB);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite, rainbowFlow 3s linear infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes rainbowFlow {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: #333;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .heart {
+            color: #e74c3c;
+            font-size: 2em;
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 1.2em;
+            background: linear-gradient(90deg, #FF0080, #FF8C00, #FFD700, #00FF00, #00CED1, #4169E1, #9370DB);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+            animation: rainbowFlow 3s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 10px;
+            }
+            
+            .message {
+                font-size: 0.8em;
+                line-height: 1.5;
+                margin: 12px 0;
+            }
+            
+            .heart {
+                font-size: 1.4em;
+            }
+            
+            .signature {
+                margin-top: 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-grid-container">
+        <!-- Row 1 -->
+        <div class="photo-row">
+            <img src="https://i.ibb.co/Jj0MKQKQ/mami1.jpg" alt="mami1" class="sliding-photo">
+            <img src="https://i.ibb.co/whMgYSmc/mami2.jpg" alt="mami2" class="sliding-photo">
+            <img src="https://i.ibb.co/B5q9m3df/mami3.jpg" alt="mami3" class="sliding-photo">
+            <img src="https://i.ibb.co/0Vck0KtB/mami4.jpg" alt="mami4" class="sliding-photo">
+            <img src="https://i.ibb.co/LDnM4SNd/mami5.jpg" alt="mami5" class="sliding-photo">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.ibb.co/Jj0MKQKQ/mami1.jpg" alt="mami1" class="sliding-photo">
+            <img src="https://i.ibb.co/whMgYSmc/mami2.jpg" alt="mami2" class="sliding-photo">
+            <img src="https://i.ibb.co/B5q9m3df/mami3.jpg" alt="mami3" class="sliding-photo">
+            <img src="https://i.ibb.co/0Vck0KtB/mami4.jpg" alt="mami4" class="sliding-photo">
+            <img src="https://i.ibb.co/LDnM4SNd/mami5.jpg" alt="mami5" class="sliding-photo">
+        </div>
+
+        <!-- Row 2 -->
+        <div class="photo-row">
+            <img src="https://i.ibb.co/VYcnWmkJ/mami6.jpg" alt="mami6" class="sliding-photo">
+            <img src="https://i.ibb.co/tM6HtFPh/mami7.jpg" alt="mami7" class="sliding-photo">
+            <img src="https://i.ibb.co/jPFLqR53/mami8.jpg" alt="mami8" class="sliding-photo">
+            <img src="https://i.ibb.co/zTZBq3zF/mami9.jpg" alt="mami9" class="sliding-photo">
+            <img src="https://i.ibb.co/bMyPVpX4/mami10.jpg" alt="mami10" class="sliding-photo">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.ibb.co/VYcnWmkJ/mami6.jpg" alt="mami6" class="sliding-photo">
+            <img src="https://i.ibb.co/tM6HtFPh/mami7.jpg" alt="mami7" class="sliding-photo">
+            <img src="https://i.ibb.co/jPFLqR53/mami8.jpg" alt="mami8" class="sliding-photo">
+            <img src="https://i.ibb.co/zTZBq3zF/mami9.jpg" alt="mami9" class="sliding-photo">
+            <img src="https://i.ibb.co/bMyPVpX4/mami10.jpg" alt="mami10" class="sliding-photo">
+        </div>
+
+        <!-- Row 3 -->
+        <div class="photo-row">
+            <img src="https://i.ibb.co/tPzQt76w/mami11.jpg" alt="mami11" class="sliding-photo">
+            <img src="https://i.ibb.co/0pJQg5nf/mami12.jpg" alt="mami12" class="sliding-photo">
+            <img src="https://i.ibb.co/SXJBPQY5/mami13.jpg" alt="mami13" class="sliding-photo">
+            <img src="https://i.ibb.co/M5s9HHwH/mami14.jpg" alt="mami14" class="sliding-photo">
+            <img src="https://i.ibb.co/HLL5Tyhp/mami15.jpg" alt="mami15" class="sliding-photo">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.ibb.co/tPzQt76w/mami11.jpg" alt="mami11" class="sliding-photo">
+            <img src="https://i.ibb.co/0pJQg5nf/mami12.jpg" alt="mami12" class="sliding-photo">
+            <img src="https://i.ibb.co/SXJBPQY5/mami13.jpg" alt="mami13" class="sliding-photo">
+            <img src="https://i.ibb.co/M5s9HHwH/mami14.jpg" alt="mami14" class="sliding-photo">
+            <img src="https://i.ibb.co/HLL5Tyhp/mami15.jpg" alt="mami15" class="sliding-photo">
+        </div>
+
+        <!-- Row 4 -->
+        <div class="photo-row">
+            <img src="https://i.ibb.co/Pnm8bTC/mami16.jpg" alt="mami16" class="sliding-photo">
+            <img src="https://i.ibb.co/FLWz4PF9/mami17.jpg" alt="mami17" class="sliding-photo">
+            <img src="https://i.ibb.co/YBSLy8Lq/mami18.jpg" alt="mami18" class="sliding-photo">
+            <img src="https://i.ibb.co/bR5CZQZC/mami19.jpg" alt="mami19" class="sliding-photo">
+            <img src="https://i.ibb.co/fdjmV9Xj/mami20.jpg" alt="mami20" class="sliding-photo">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.ibb.co/Pnm8bTC/mami16.jpg" alt="mami16" class="sliding-photo">
+            <img src="https://i.ibb.co/FLWz4PF9/mami17.jpg" alt="mami17" class="sliding-photo">
+            <img src="https://i.ibb.co/YBSLy8Lq/mami18.jpg" alt="mami18" class="sliding-photo">
+            <img src="https://i.ibb.co/bR5CZQZC/mami19.jpg" alt="mami19" class="sliding-photo">
+            <img src="https://i.ibb.co/fdjmV9Xj/mami20.jpg" alt="mami20" class="sliding-photo">
+        </div>
+
+        <!-- Row 5 -->
+        <div class="photo-row">
+            <img src="https://i.ibb.co/Jj0MKQKQ/mami1.jpg" alt="mami1" class="sliding-photo">
+            <img src="https://i.ibb.co/VYcnWmkJ/mami6.jpg" alt="mami6" class="sliding-photo">
+            <img src="https://i.ibb.co/tPzQt76w/mami11.jpg" alt="mami11" class="sliding-photo">
+            <img src="https://i.ibb.co/Pnm8bTC/mami16.jpg" alt="mami16" class="sliding-photo">
+            <img src="https://i.ibb.co/B5q9m3df/mami3.jpg" alt="mami3" class="sliding-photo">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.ibb.co/Jj0MKQKQ/mami1.jpg" alt="mami1" class="sliding-photo">
+            <img src="https://i.ibb.co/VYcnWmkJ/mami6.jpg" alt="mami6" class="sliding-photo">
+            <img src="https://i.ibb.co/tPzQt76w/mami11.jpg" alt="mami11" class="sliding-photo">
+            <img src="https://i.ibb.co/Pnm8bTC/mami16.jpg" alt="mami16" class="sliding-photo">
+            <img src="https://i.ibb.co/B5q9m3df/mami3.jpg" alt="mami3" class="sliding-photo">
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>Happy Birthday Mama!</h1>
+        
+        <div class="message">
+            I'm sorry if I made you upset yesterday. I hope you can enjoy your special day surrounded by your friends and everyone in the house.
+            <br><br>
+            Wishing you a day filled with love, laughter, and all the joy you bring to everyone around you.
+            <br><br>
+            I hope you stay healthy and always be optimistic ;)
+            <br><br>
+            Thank you for everything you do and for being the most amazing mama.
+            <br><br>
+            <span class="heart">♥</span>
+        </div>
+        
+        <div class="signature">
+            With all my love,<br>
+            Vivi <3
+        </div>
+    </div>
+</body>
+</html>
